@@ -443,10 +443,10 @@ cdef class MKLPardisoSolver:
         par.iparm[4] = 2  # fill perm with computed permutation vector
         par.iparm[5] = 0  # The array x contains the solution; right-hand side vector b is kept unchanged.
         par.iparm[7] = 0  # The solver automatically performs two steps of iterative refinement when perterbed pivots are obtained
-        par.iparm[9] = 13 if matrix_type in [11, 13] else 8
-        par.iparm[10] = 1 if matrix_type in [11, 13] else 0
+        par.iparm[9] = 13 if matrix_type in [11, 13] else 11
+        par.iparm[10] = 1 if matrix_type in [-2, 11, 13] else 0
         par.iparm[11] = 0  # Solve a linear system AX = B (as opposed to A.T or A.H)
-        par.iparm[12] = 1 if matrix_type in [11, 13] else 0
+        par.iparm[12] = 1 if matrix_type in [-2, 11, 13] else 0
         par.iparm[17] = -1  # Return the number of non-zeros in this value after first call
         par.iparm[18] = 0  # do not report flop count
         par.iparm[20] = 1 if matrix_type in [-2, -4, 6] else 0
